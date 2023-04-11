@@ -16,7 +16,6 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
-    "google-libphonenumber": "3.2.32",
     "libphonenumber-js": "^1.10.18",
     "lodash": "4.17.21",
     "next": "13.1.5",
