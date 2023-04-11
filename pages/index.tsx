@@ -15,10 +15,14 @@ export default function Home() {
     new Map()
   );
   useEffect(() => {
+    const setPokemon = async (pokemonId: PokemonId) => {
+      const pokemon = await getPokemon(pokemonId);
+      setPokemons((pokemons) => new Map(pokemons).set(pokemonId, pokemon));
+    };
     const fetchPokemons = async () => {
       for (let pokemonId = 1; pokemonId <= MAX_POKEMON_ID; pokemonId++) {
-        const pokemon = await getPokemon(pokemonId);
-        setPokemons((pokemons) => new Map(pokemons).set(pokemonId, pokemon));
+        // setPokemons((pokemons) => new Map(pokemons).set(pokemonId, pokemon));
+        setPokemon(pokemonId);
       }
     };
     fetchPokemons();
@@ -38,7 +42,7 @@ export default function Home() {
       <Layout>
         <div className={styles.main}>
           <div className={styles.pokemonListing}>
-            {[...pokemons.values()].map((pokemon) => (
+            {[...pokemons.values()].sort().map((pokemon) => (
               <Pokemon key={pokemon.key} pokemon={pokemon} />
             ))}
           </div>
